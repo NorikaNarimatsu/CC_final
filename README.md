@@ -87,5 +87,9 @@ Step 2: Also, enter the following in `text2chord("key", "lyric")`.
 
 # Reference
 
-* magenta:https://github.com/magenta/magenta
+* https://ichi.pro/furosutosongu-ai-o-shiyoshite-shi-kara-ongaku-o-seiseisuru-109320446959370
 * transformers:https://github.com/huggingface/transformers
+* https://qiita.com/hnishi/items/0d32a778e375a99aff13
+* https://www.ufret.jp/
+* https://qiita.com/kinopee0120/items/7bbcda4afa7e501d6272
+* https://qiita.com/a2kiti/items/c0fea6e415bf7d743e16
