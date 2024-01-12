@@ -3,6 +3,10 @@
 
 Analyzes lyrics inputted by human using Huggingface Transformers, an emotion analysis library, and presents chord progressions appropriate to the emotion of the lyrics.
 
+<img width="1277" alt="image" src="https://github.com/NorikaNarimatsu/CC_final/assets/77351189/22bcd37d-f689-4bb9-9d46-e99bbbe8cf5c">
+
+
+
 # How to use
 ● Input the your own name song name in "song_name", which will be used to create appropriate directories in Google Colab.
 
