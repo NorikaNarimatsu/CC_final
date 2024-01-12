@@ -9,7 +9,13 @@ Analyzes lyrics inputted by human using Huggingface Transformers, an emotion ana
 ```
 song_name = "can_you_feel_the_love_tonight"
 ```
+
+<img width="800" alt="image" src="https://github.com/NorikaNarimatsu/CC_final/assets/77351189/32e02de1-eabb-4a8a-bcc0-fbd4026941ed">
+
+It will create the corresponding folder on Google Colab File Directories
+
 ● Entering `key` and `lyric` in the `text2chord("key", "lyric") ` 
+Example Input
 ```
 text2chord("D","愛を感じて")
 text2chord("D","世界を包む　ハーモニー")
@@ -18,73 +24,66 @@ text2chord("D","話したいけどどうすればいい")
 text2chord("D","過去の真実ああだめだ")
 text2chord("D","王はあなた")
 ```
-
+Example Output
 ```
-la3 : G F# Bm
-人は何度見上げれば空が見えるのか : Emaj7 Em7 Emaj7 Em7
-人にはいくつ耳があれば人々の悲しみが聞こえるのか : G F#7 Bm Am D
-どれ位の人が死んだら : Dmaj7 A/C# Bm Dm
-あまりにも多くの人が亡くなったことに気づくのか : G A D G A D
-友よ答えは風に吹かれて : G#/C A#m G# G#/C A#m G#
-風に吹かれている : Bm F#/Bb Bm F#/Bb
-la3 : G F# Bm
+愛を感じて : Cm7 Bm7 Bbm7 Eb / 0.8613585233688354
+
+世界を包む　ハーモニー : G/B C D G D/F# / 0.7437107563018799
+
+命の歌よ : G# G G# G / 0.744433581829071
+
+話したいけどどうすればいい : G C#m7-5 F# G C#m7-5 F# / 0.686124861240387
+
+過去の真実ああだめだ : Fm G Cm Bbm Eb / 0.5220361351966858
+
+王はあなた : G A D G A D / 0.9682599306106567
 ```
 
-* 「Magentaでメロディを生成」の実行で、音楽を生成
+* Convert chord to MIDI file
 
-* 「生成音楽の再生」の実行で、生成された音楽を確認
+* Conver MIDI file to WAV using FluidSynth and pydub
 
-* 生成された音楽をMIDIファイルとしてダウンロードし、DAWソフトなどで自由に編集することも可能
-
-<img width="562" alt="スクリーンショット 2022-05-19 12 28 48" src="https://user-images.githubusercontent.com/105255463/169198255-5777751e-430c-4701-ac2e-c877a9884f8e.png">
+<img width="827" alt="image" src="https://github.com/NorikaNarimatsu/CC_final/assets/77351189/fcbab71a-7b5f-4dfd-a959-27c72d4ab23f">
 
 
 
 # Features
-
-* テキスト入力により、音楽の知識がなくても作曲が可能
-* 歌詞ごとにMIDIファイルを作成しているため、magentaよりも自由なコード進行が可能
-* 音楽学習生成ライブラリMagentaで学習させたモデルを用いているため、別途自分で学習させたモデルを使用することで自分好みの音楽を生成させることが可能
-* 生成された音楽はMIDIファイルとして取得することができるため、最終的に自分で自由に編集が可能
+* Text input allows composition without any musical knowledge
+* Generated music can be retrieved as a MIDI file, allowing user to freely edit the final product themselves
 
 # Requirement
-
-* Magenta
 * Transformers
-* その他
+* Google　Account to run Colaboratory Environment 
 
 # Installation
 
-パッケージのインストール
+pacakege
 
 ```
-!git clone https://github.com/noriakihanya/EmotionsMelody.git
-!pip install -r /content/EmotionsMelody/requirements.txt
-!apt install fluidsynth
-!cp /usr/share/sounds/sf2/FluidR3_GM.sf2 ./font.sf2
-!pip install midi2audio
+!pip install fugashi
+!pip install ipadic
+!pip install pretty_midi
+!apt-get install fluidsynth
+!wget "https://schristiancollins.com/generaluser.php?action=download&name=GeneralUserGSfMTV11.zip" -O soundfont.zip
+!unzip soundfont.zip
 ```
 
 # Usage
 
-Google Colaboratoryを使用する場合、基本的にセルを上から順番に実行することができるため「詩をコードに変換」セルの使い方について以下で説明
+For reasons such as Transformer setup, the Google Colaboratory environment specification is strongly recommended.
 
-「詩をコードに変換」セルの`text_to_chord("key","lyric")`にそれぞれ以下のように入力する。
-
-* keyはC G D A E B F# C# F Bb Eb Ab Db Gb Cb　から選択
-
-* lyricは、基本的に歌詞を日本語で入力する。（英語が含まていても何かしらのコード進行は出力される。）
-
-* "la+n"を入力することで、n個分のコード進行がランダムで表示される。現在１〜１０まで対応しているが、９は対象なし。なお、n個分のコード進行が得られないことがある（コードが１つや２つしか出力されない時がある）ため、任意のコード進行が得られるまで実行ボタンを押下して任意のコード数を得るは可能となっている。※対応方法については検討中
-
+Step 1: When using Google Colaboratory, you can basically run the cells in order from the top. All the user has to do is,
+Put any song name into song_name.
 ```
-text_to_chord("D","la3")
+song_name = "can_you_feel_the_love_tonight"
 ```
+Step 2: Also, enter the following in `text2chord("key", "lyric")`.
 ```
-la3 : G F# Bm
-```
+* key is selected from C G D A E B F# C# F Bb Eb Ab Db Gb Cb
 
-* 歌詞を増やす場合、text_to_chord("key","lyric")をコピーし、任意の箇所にペーストすることで好きな場所に音楽を生成させることができる。
+* For "lyric", you are recommended to enter the lyrics in Japanese. (Even if English is included, some kind of chord progression will be output.)
+```
+* To add more lyrics, copy text2chord("key", "lyric") and paste it anywhere you want to generate music.
 
 # Reference
 
