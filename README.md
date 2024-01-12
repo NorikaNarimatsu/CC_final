@@ -1,21 +1,22 @@
-# EmotionsMelody
-***- あなたの言葉が音楽になる -***
+# Computational Creativity Final Project
+***- A Sentiment-Driven Co-Creative Music Generation System -***
 
-感情分析ライブラリHuggingface Transformersを用いて入力した歌詞を分析し、J-POPの歌詞とコード進行を分析し集積したデータベースから入力した歌詞の感情に適したコード進行を提示する。提示されたコード進行に基づいて音楽生成ライブラリMagentaで音楽を生成する。
+Analyzes lyrics inputted by human using Huggingface Transformers, an emotion analysis library, and presents chord progressions appropriate to the emotion of the lyrics.
 
-# DEMO
-●「詩をコードに変換」セルの`text_to_chord("key","lyric") `に`key`と`lyric`を入力することで、コード進行が出力される。
+# How to use
+● Input the your own name song name in "song_name", which will be used to create appropriate directories in Google Colab.
 
 ```
-#ボブ・ディラン　風に吹かれて
-text_to_chord("D","la3")
-text_to_chord("D","人は何度見上げれば空が見えるのか")
-text_to_chord("D","人にはいくつ耳があれば人々の悲しみが聞こえるのか")
-text_to_chord("D","どれ位の人が死んだら")
-text_to_chord("D","あまりにも多くの人が亡くなったことに気づくのか")
-text_to_chord("D","友よ答えは風に吹かれて")
-text_to_chord("D","風に吹かれている")
-text_to_chord("D","la3")
+song_name = "can_you_feel_the_love_tonight"
+```
+● Entering `key` and `lyric` in the `text2chord("key", "lyric") ` 
+```
+text2chord("D","愛を感じて")
+text2chord("D","世界を包む　ハーモニー")
+text2chord("D","命の歌よ")
+text2chord("D","話したいけどどうすればいい")
+text2chord("D","過去の真実ああだめだ")
+text2chord("D","王はあなた")
 ```
 
 ```
